@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="access_note:jar">
+    <output-path>$USER_HOME$/Desktop</output-path>
+    <root id="archive" name="access_note.jar">
+      <element id="module-output" name="access_note" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/sample/core-3.4.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/sample/javase-3.4.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

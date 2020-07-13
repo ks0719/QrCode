@@ -8,7 +8,9 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
+import javax.xml.soap.Text;
 import java.io.*;
+import java.net.URLClassLoader;
 
 public class Controller {
 
@@ -56,12 +58,18 @@ public class Controller {
        }
     }
     public void Sample_loc() {
+        Text_loc.setText(this.getClass().getResource(".").getPath()+"/양식 파일.xlsx");
         dc = new DirectoryChooser();
         f = dc.showDialog(this.w);
         if(f!=null){
-            String inFileName = inFileName = String.valueOf(Main.class.getResource("").getPath().replaceAll("%", " ").replaceAll("/", "\\\\")) + "양식 파일.xlsx";
+            //String inFileName = inFileName = String.valueOf(Main.class.getResource("").getPath().replaceAll("%", " ").replaceAll("/", "\\\\")) + "양식 파일.xlsx";
+            String inFileName = inFileName = this.getClass().getResource(".").getPath()+"/양식 파일.xlsx";
             String outFileName = this.f.getAbsolutePath()+"\\양식 파일.xlsx";
+
+
+            QR_loc.setText(outFileName);
             try {
+                InputStream in=getClass().getResourceAsStream("/양식 파일.xlsx");
                 FileInputStream fis = new FileInputStream(inFileName);
                 FileOutputStream fos = new FileOutputStream(outFileName);
                 int data = 0;
@@ -71,10 +79,13 @@ public class Controller {
                 fis.close();
                 fos.close();
             } catch (Exception e) {
-                e.printStackTrace();
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText(e.toString());
+                a.setTitle("파일 생성 결과");
+                a.showAndWait();
             }
             Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setContentText("파일이 정상적으로 생성되었습니다.");
+            a.setContentText("파일이 정상적으로 생성되었습니다."+inFileName+"/"+outFileName);
             a.setTitle("파일 생성 결과");
             a.showAndWait();
         }
