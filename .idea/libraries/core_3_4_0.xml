@@ -1,7 +1,8 @@
 <component name="libraryTable">
   <library name="core-3.4.0">
     <CLASSES>
-      <root url="jar://$USER_HOME$/Desktop/core-3.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/sample/core-3.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/sample/javase-3.4.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
