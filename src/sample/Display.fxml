@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="166.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <Button fx:id="Text_btn" layoutX="270.0" layoutY="56.0" mnemonicParsing="false" onAction="#Text_loc" text="찾아보기" />
       <TextField fx:id="Text_loc" editable="false" layoutX="60.0" layoutY="56.0" prefHeight="23.0" prefWidth="212.0" promptText="텍스트 파일 위치" />
@@ -19,5 +19,7 @@
       <TextField fx:id="QR_loc" editable="false" layoutX="60.0" layoutY="85.0" prefHeight="23.0" prefWidth="212.0" promptText="QR코드 생성 위치" />
       <Button fx:id="Sample_btn" layoutX="60.0" layoutY="115.0" mnemonicParsing="false" onAction="#Sample_loc" prefHeight="23.0" prefWidth="129.0" text="양식 파일 다운" />
       <Button fx:id="Action_Btn" layoutX="190.0" layoutY="115.0" mnemonicParsing="false" onAction="#Action_btn" prefHeight="23.0" prefWidth="145.0" text="QR코드 생성하기" />
+      <Label layoutX="313.0" layoutY="145.0" text="Version:1.0" />
+      <Label layoutX="14.0" layoutY="145.0" text="Made by kwangseok1997@gmail.com" />
    </children>
 </AnchorPane>

@@ -14,12 +14,15 @@ import java.util.Arrays;
 public class BarCode {
     public void new_BarCode(String[] line,String pathname) {
         //line[0]=코드,line[1]=이름,line[2]=생년월일,line[3]=성별,line[4]=직분,line[5]=구역
-        String name="["+line[5]+"]"+line[1]+" "+line[4]+"["+line[3]+"]("+line[2]+")";
+        String name="["+line[5]+"]"+line[1]+" "+line[4]+"님["+line[3]+"]("+line[2]+")";
         System.out.println(Arrays.toString(line));
       try{
 
           File f = null;
-          f=new File(pathname+"/"+name+".png");
+          f=new File(pathname+"/"+line[5]+"/"+name+".png");
+          if(!f.exists()){
+              f.mkdirs();
+          }
           //코드 값?
           String codeurl=new String(line[0].getBytes("UTF-8"),"ISO-8859-1");
           //QR코드 바코드 생성값?

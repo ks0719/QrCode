@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Display.fxml"));
         primaryStage.setTitle("QR코드 생성 프로그램");
         primaryStage.setScene(new Scene(root, 388, 166));
         primaryStage.setResizable(false);

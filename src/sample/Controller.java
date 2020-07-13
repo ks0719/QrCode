@@ -33,47 +33,51 @@ public class Controller {
     File f;
 
     public void Text_loc() {
-             this.fc = new FileChooser();
-             this.fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("QR코드 생성 리스트", new String[] { "*.txt" }));
-             this.f = this.fc.showOpenDialog(this.w);
-           try {
-                   this.Text_loc.setText(this.f.getAbsolutePath());
-                 } catch (Exception e) {
-                  e.printStackTrace();
-                }
+             fc = new FileChooser();
+             fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("QR코드 생성 리스트", new String[] { "*.txt" }));
+             f = this.fc.showOpenDialog(this.w);
+        if(f!=null){
+            try {
+                this.Text_loc.setText(this.f.getAbsolutePath());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
           }
     public void QR_loc() {
-        this.dc = new DirectoryChooser();
-        this.f = this.dc.showDialog(this.w);
-        try {
-            this.QR_loc.setText(this.f.getAbsolutePath());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+       dc = new DirectoryChooser();
+       f = this.dc.showDialog(this.w);
+       if(f!=null){
+           try {
+               this.QR_loc.setText(this.f.getAbsolutePath());
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+       }
     }
     public void Sample_loc() {
-        this.dc = new DirectoryChooser();
-        this.f = dc.showDialog(this.w);
-        this.f.getAbsolutePath();
-
-        String inFileName = inFileName = String.valueOf(Main.class.getResource("").getPath().replaceAll("%", " ").replaceAll("/", "\\\\")) + "양식 파일.xlsx";
-        String outFileName = this.f.getAbsolutePath()+"\\양식 파일.xlsx";
-        try {
-            FileInputStream fis = new FileInputStream(inFileName);
-            FileOutputStream fos = new FileOutputStream(outFileName);
-            int data = 0;
-            byte[] b = new byte[4096];
-            while ((data = fis.read(b)) != -1)
-                fos.write(b, 0, data);
-            fis.close();
-            fos.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        dc = new DirectoryChooser();
+        f = dc.showDialog(this.w);
+        if(f!=null){
+            String inFileName = inFileName = String.valueOf(Main.class.getResource("").getPath().replaceAll("%", " ").replaceAll("/", "\\\\")) + "양식 파일.xlsx";
+            String outFileName = this.f.getAbsolutePath()+"\\양식 파일.xlsx";
+            try {
+                FileInputStream fis = new FileInputStream(inFileName);
+                FileOutputStream fos = new FileOutputStream(outFileName);
+                int data = 0;
+                byte[] b = new byte[4096];
+                while ((data = fis.read(b)) != -1)
+                    fos.write(b, 0, data);
+                fis.close();
+                fos.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("파일이 정상적으로 생성되었습니다.");
+            a.setTitle("파일 생성 결과");
+            a.showAndWait();
         }
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
-        a.setContentText("파일이 정상적으로 생성되었습니다.");
-        a.setTitle("파일 생성 결과");
-        a.showAndWait();
     }
 
     BarCode br=new BarCode();
@@ -87,6 +91,14 @@ public class Controller {
                 //System.out.println(line);
                 if(i>0){
                     String[] lines=line.split("\t");
+                    if(lines.length!=6){
+                        Alert a = new Alert(Alert.AlertType.ERROR);
+                        a.setContentText("내용이 올바르지 않습니다. 파일의 내용을 다시 확인해주세요.\n위치:"+i+"번째 줄");
+                        a.setHeaderText("양식 파일 에러");
+                        a.setTitle("결과");
+                        a.showAndWait();
+                        return;
+                    }
                     System.out.println(lines+"/"+QR_loc.getText());
                     br.new_BarCode(lines,QR_loc.getText());
                 }
@@ -94,8 +106,9 @@ public class Controller {
             }
             reader.close();
         }catch (FileNotFoundException e){
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setContentText("파일이 없습니다.!"+e);
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setContentText("경로가 제대로 설정되지 않았습니다.! 재 확인 바랍니다.");
+            a.setHeaderText("완료");
             a.setTitle("결과");
             a.showAndWait();
 
