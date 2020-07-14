@@ -19,7 +19,7 @@
       <TextField fx:id="QR_loc" editable="false" layoutX="60.0" layoutY="85.0" prefHeight="23.0" prefWidth="212.0" promptText="QR코드 생성 위치" />
      <!-- <Button fx:id="Sample_btn" layoutX="60.0" layoutY="115.0" mnemonicParsing="false" onAction="#Sample_loc" prefHeight="23.0" prefWidth="129.0" text="양식 파일 다운" /> -->
       <Button fx:id="Action_Btn" layoutX="199.0" layoutY="115.0" mnemonicParsing="false" onAction="#Action_btn" prefHeight="23.0" prefWidth="136.0" text="QR코드 생성하기" />
-      <Label layoutX="313.0" layoutY="145.0" text="Version:1.0" />
+      <Label layoutX="313.0" layoutY="145.0" text="Version:1.1" />
       <Label layoutX="14.0" layoutY="145.0" text="Made by kwangseok1997@gmail.com" />
       <Button fx:id="Sample_btn" layoutX="60.0" layoutY="115.0" mnemonicParsing="false" onAction="#Sample_loc" prefHeight="23.0" prefWidth="136.0" text="샘플 파일 다운" />
    </children>
