@@ -90,7 +90,7 @@ public class Controller {
     public void Action_btn(){
         f=new File(Text_loc.getText());
         try{
-            BufferedReader reader=new BufferedReader(new InputStreamReader(new FileInputStream(f),"euc-kr"));
+            BufferedReader reader=new BufferedReader(new InputStreamReader(new FileInputStream(f),"UTF-8"));
             String line="";
             int i=0;
             while((line=reader.readLine())!=null){
