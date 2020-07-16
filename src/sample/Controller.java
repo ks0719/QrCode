@@ -58,19 +58,14 @@ public class Controller {
        }
     }
     public void Sample_loc() {
-        Text_loc.setText(this.getClass().getResource(".").getPath()+"/양식 파일.xlsx");
+
         dc = new DirectoryChooser();
         f = dc.showDialog(this.w);
         if(f!=null){
-            //String inFileName = inFileName = String.valueOf(Main.class.getResource("").getPath().replaceAll("%", " ").replaceAll("/", "\\\\")) + "양식 파일.xlsx";
-            String inFileName = inFileName = this.getClass().getResource(".").getPath()+"/양식 파일.xlsx";
             String outFileName = this.f.getAbsolutePath()+"\\양식 파일.xlsx";
-
-
-            QR_loc.setText(outFileName);
             try {
-                InputStream in=getClass().getResourceAsStream("/양식 파일.xlsx");
-                FileInputStream fis = new FileInputStream(inFileName);
+                //아래걸로 해야지 다운되네요.
+                InputStream fis=getClass().getResourceAsStream("/sample/양식 파일.xlsx");
                 FileOutputStream fos = new FileOutputStream(outFileName);
                 int data = 0;
                 byte[] b = new byte[4096];
@@ -85,7 +80,7 @@ public class Controller {
                 a.showAndWait();
             }
             Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setContentText("파일이 정상적으로 생성되었습니다."+inFileName+"/"+outFileName);
+            a.setContentText("파일이 정상적으로 생성되었습니다.경로:"+outFileName);
             a.setTitle("파일 생성 결과");
             a.showAndWait();
         }
